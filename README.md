@@ -34,31 +34,31 @@ The journey from raw files to a final report follows a clear, automated sequence
 graph TD
     subgraph "1. Upload & Hashing"
         A[/"Drag & Drop Folders"/] --> B{Traverse Directories};
-        B --> C{Filter for <br>details.txt, <br>downloadstatus.xml, <br>netstat.txt};
+        B --> C{"Filter for details.txt, downloadstatus.xml, netstat.txt"};
         C --> D[Read File Contents];
-        D --> E[Calculate MD5, SHA-1, SHA-256 <br> for each file];
+        D --> E["Calculate MD5, SHA-1, SHA-256 for each file"];
     end
 
     subgraph "2. File Set Grouping"
-        E --> F[Group Files by <br> Parent Folder];
-        F --> G[Create File Sets <br> e.g., {folder: "Case123", <br> detailsFile: {...}, <br> xmlFile: {...}}];
+        E --> F["Group Files by Parent Folder"];
+        F --> G["Create File Sets e.g., {folder: Case123, detailsFile: {...}, xmlFile: {...}}"];
     end
 
     subgraph "3. Batch Analysis"
-        G --> H(Display Dashboard & <br> User Clicks "Run Batch Analysis");
+        G --> H["Display Dashboard & User Clicks Run Batch Analysis"];
         H --> I{Iterate Each File Set};
         I -- details.txt --> J[Run General, BitTorrent, Security, AI Analyses];
-        J -- Has netstat.txt? --> K[Enrich Security Analysis <br>with Netstat Data];
+        J -- "Has netstat.txt?" --> K["Enrich Security Analysis with Netstat Data"];
         I -- downloadstatus.xml --> L[Run XML TDR Analysis];
     end
 
     subgraph "4. Report Generation"
         K --> M{Aggregate All Results};
         L --> M;
-        M --> N[Generate Comprehensive <br> HTML Report];
-        N --> O[Generate Canonical JSON <br> of Report Data];
-        O --> P[Calculate SHA-256 <br> Report Integrity Hash];
-        P --> Q[/Display Final Report <br> with Integrity Hash/];
+        M --> N["Generate Comprehensive HTML Report"];
+        N --> O["Generate Canonical JSON of Report Data"];
+        O --> P["Calculate SHA-256 Report Integrity Hash"];
+        P --> Q[/"Display Final Report with Integrity Hash"/];
     end
 
     style A fill:#D6BCFA,stroke:#333,stroke-width:2px
